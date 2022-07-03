@@ -31,6 +31,26 @@ pipeline {
                 sh 'docker push  jagadeeshbm/jhooq-docker-demo:jhooq-docker-demo'
             }
         }
+        stage('SSH Into k8s Server') {
+            steps {
+                def remote = [:]
+                remote.name = 'k8s-master'
+                remote.host = '54.191.49.217'
+                remote.user = 'clou_user'
+                remote.password = '!BMemp@91'
+                remote.allowAnyHosts = true
+            }
+        }
+        stage('Put k8s-spring-boot-deployment.yml onto k8smaster') {
+            steps {
+                    sshPut remote: remote, from: 'k8s-spring-boot-deployment.yml', into: '.'
+            }
+        }
+        stage('Deploy spring boot') {
+            steps {
+                sshCommand remote: remote, command: "kubectl apply -f k8s-spring-boot-deployment.yml"
+            }
+        }
     }
 }
 
