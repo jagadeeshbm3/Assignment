@@ -2,7 +2,7 @@ node {
 
     stage("Git Clone"){
 
-        git credentialsId: 'github', url: 'https://github.com/jagadeeshbm3/Assignment.git'
+        git branch: 'main', credentialsId: 'github', url: 'https://github.com/jagadeeshbm3/Assignment.git'
     }
 
      stage('Gradle Build') {
