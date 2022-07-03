@@ -43,6 +43,7 @@ pipeline {
                 sshPut remote: remote, from: 'k8s-spring-boot-deployment.yml', into: '.'   
             }
         }
+        }
         stage('Deploy spring boot') {
             steps {
                 sshCommand remote: remote, command: "kubectl apply -f k8s-spring-boot-deployment.yml"
