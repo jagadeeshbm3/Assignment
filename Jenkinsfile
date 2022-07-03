@@ -1,8 +1,9 @@
-node {
+pipeline {
+    agent any 
 
     stage("Git Clone"){
 
-        git branch: 'master', credentialsId: 'github', url: 'https://github.com/jagadeeshbm3/Assignment.git'
+        git credentialsId: 'github', url: 'https://github.com/jagadeeshbm3/Assignment.git'
     }
 
      stage('Gradle Build') {
