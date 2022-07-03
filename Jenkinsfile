@@ -34,7 +34,7 @@ pipeline {
         stage('Deploy spring boot') {
             steps {
                 script {
-                    kubernetesDeploy(configs: "k8s-spring-boot-deployment.yml", kubeconfigId: "kubeconfig")
+                    kubernetesDeploy(configs: "k8s-spring-boot-deployment.yml", kubeconfigId: "kubeconfig1")
                 }
             }
         }
