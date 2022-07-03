@@ -16,19 +16,19 @@ pipeline {
                 sh 'docker version'
                 sh 'docker build -t jhooq-docker-demo .'
                 sh 'docker image list'
-                sh 'docker tag jhooq-docker-demo jagadeeshbm3/jhooq-docker-demo:jhooq-docker-demo'
+                sh 'docker tag jhooq-docker-demo jagadeeshbm/jhooq-docker-demo:jhooq-docker-demo'
             }
         }
         stage('dockerhub login') {
             steps {
                 withCredentials([string(credentialsId: 'DOCKER_HUB_PASSWORD', variable: 'PASSWORD')]) {
-                    sh 'docker login -u jagadeeshbm3 -p $PASSWORD'
+                    sh 'docker login -u jagadeeshbm -p $PASSWORD'
                 }
             }
         }
         stage('Push Image to Docker Hub') {
             steps {
-                sh 'docker push  jagadeeshbm3/jhooq-docker-demo:jhooq-docker-demo'
+                sh 'docker push  jagadeeshbm/jhooq-docker-demo:jhooq-docker-demo'
             }
         }
     }
