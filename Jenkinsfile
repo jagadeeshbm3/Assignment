@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Git Checkout') {
             steps {
-                git branch: 'main', credentialsId: 'github_key', url: 'https://github.com/jagadeeshbm3/Assignment.git'
+                git branch: 'main', credentialsId: 'github', url: 'https://github.com/jagadeeshbm3/Assignment.git'
             }
         }
         stage('Gradle Build') {
@@ -33,8 +33,6 @@ pipeline {
         }
     }
 }
-
-
 
 
 
